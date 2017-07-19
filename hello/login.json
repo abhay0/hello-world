@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "isLogin": {
+      "type": "identifier",
+      "selector": "[id=\"sysverb_login\"]",
+      "control": "exists"
+    },
+    "Username": {
+      "type": "string",
+      "selector": "[id=\"user_name\"]",
+      "control": "text"
+    },
+    "Password": {
+      "type": "string",
+      "selector": "[id=\"user_password\"]",
+      "control": "text"
+    },
+    "Login": {
+      "type": "action",
+      "selector": "[id=\"sysverb_login\"]",
+      "control": "action.button"
+    },
+    "err": {
+      "type": "string",
+      "selector": ".outputmsg.outputmsg_error.notification.notification-danger",
+      "control": "property.innerText"
+    }
+  },
+  "connect": [
+    {
+      "match": [
+        "isLogin"
+      ],
+      "screens": [
+        "login"
+      ]
+    }
+  ],
+  "frameSelector": "#gsft_main"
+}

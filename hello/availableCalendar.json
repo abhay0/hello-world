@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "properties": {
+    "next": {
+      "type": "action",
+      "selector": "button span[class=\"fc-icon fc-icon-right-single-arrow\"]",
+      "control": "action.button"
+    },
+    "previous": {
+      "type": "action",
+      "selector": "button span[class=\"fc-icon fc-icon-left-single-arrow\"]",
+      "control": "action.button"
+    },
+    "fullList": {
+      "type": "array",
+      "selectorAll": ".fc-popover.fc-more-popover div[class=\"fc-body fc-widget-content\"] a",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "control": "property.innerText"
+          }
+        }
+      }
+    },
+    "day": {
+      "type": "string",
+      "selector": "div[class=\"fc-row fc-widget-header\"] table thead tr",
+      "control": "property.innerText"
+    },
+    "day1": {
+      "type": "action",
+      "selector": "[class=\"fc-agendaDay-button fc-button fc-state-default fc-corner-right\"]",
+      "control": "action.button"
+    },
+    "daily": {
+      "type": "array",
+      "selectorAll": "[class=\"fc-row fc-week fc-widget-content\"] .fc-content-skeleton table tbody tr",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "control": "property.innerText",
+            "selector": "[class=\"fc-event-container\"] a"
+          },
+          "more": {
+            "type": "action",
+            "selector": ".fc-more",
+            "control": "action.button"
+          }
+        }
+      }
+    },
+    "today": {
+      "type": "action",
+      "selector": ".fc-today-button.fc-button.fc-state-default.fc-corner-left.fc-corner-right",
+      "control": "action.button"
+    },
+    "date": {
+      "type": "string",
+      "selector": "div[class=\"fc-center\"] h2",
+      "control": {
+        "fn": "function(params){return params.replace(/[, ]+/g,' ').trim()}",
+        "control": "property.innerText"
+      }
+    },
+    "list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "control": "property.innerText"
+          }
+        }
+      },
+      "selectorAll": ".fc-content-skeleton table tbody tr[class=\"fc-limited\"] a"
+    },
+    "isCalender": {
+      "type": "identifier",
+      "selector": "html",
+      "control": "url.View%20_resource%20_Calender.do"
+    }
+  },
+  "connect": [
+    {
+      "match": [
+        "isCalender"
+      ],
+      "screens": [
+        "availablecalendar"
+      ]
+    }
+  ]
+}

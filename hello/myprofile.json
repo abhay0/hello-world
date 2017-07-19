@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "rplink": {
+      "type": "action",
+      "selector": "#pill_7",
+      "control": "action.button"
+    },
+    "isMyProfile": {
+      "type": "identifier",
+      "selector": "[name=views]",
+      "control": "exists"
+    }
+  },
+  "connect": [
+    {
+      "match": [
+        "isMyProfile"
+      ],
+      "screens": [
+        "myprofile"
+      ]
+    }
+  ]
+}

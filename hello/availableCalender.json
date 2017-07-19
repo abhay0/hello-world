@@ -1,0 +1,157 @@
+{
+  "type": "object",
+  "properties": {
+    "calenderBody": {
+      "type": "array",
+      "selectorAll": "div[class=\"fc-row fc-week fc-widget-content fc-rigid\"] table tbody tr",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Booking": {
+            "type": "array",
+            "selectorAll": "div[class=\"fc-content-skeleton\"] table tbody tr td",
+            "items": {
+              "type": "object",
+              "properties": {
+                "bookingItem": {
+                  "type": "string",
+                  "selector": "span",
+                  "control": "property.innerText"
+                }
+              }
+            }
+          },
+          "BookingDay": {
+            "type": "array",
+            "selectorAll": "div[class=\"fc-content-skeleton\"] table thead tr td",
+            "items": {
+              "type": "object",
+              "properties": {
+                "calanderday": {
+                  "type": "string",
+                  "control": "property.innerText"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "isCalendar": {
+      "type": "identifier",
+      "selector": "center",
+      "control": "exists",
+      "selectContains": "Meeting Room Calendar"
+    },
+    "calendarBodyWeek": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "control": {
+                    "fn": "function(params){params.match(/[a-zA-Z]+/g)}",
+                    "control": "property.innerText"
+                  }
+                }
+              }
+            },
+            "selectorAll": "div [class=\"fc-content-skeleton\"] table tbody tr > td"
+          }
+        }
+      },
+      "selectorAll": "div [class=\"fc-content-skeleton\"] table tbody tr"
+    },
+    "head": {
+      "type": "array",
+      "selectorAll": "thead tr th",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "control": "property.innerText"
+          }
+        }
+      }
+    },
+    "next": {
+      "type": "action",
+      "selector": "button span[class=\"fc-icon fc-icon-right-single-arrow\"]",
+      "control": "action.button"
+    },
+    "previous": {
+      "type": "action",
+      "selector": "button span[class=\"fc-icon fc-icon-left-single-arrow\"]",
+      "control": "action.button"
+    },
+    "calendarDaily": {
+      "type": "array",
+      "selectorAll": "table tbody tr",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "array",
+            "selectorAll": ".fc-content-skeleton table tbody tr",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "control": "property.innerText"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "date": {
+      "type": "string",
+      "selector": ".fc-center h2",
+      "control": "property.innerHTML"
+    },
+    "more": {
+      "type": "action",
+      "selector": "[class=\"fc-more\"]",
+      "control": "action.link"
+    },
+    "full": {
+      "type": "array",
+      "selectorAll": ".fc-popover.fc-more-popover a",
+      "items": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "string",
+            "control": "property.innerText",
+            "selector": ".fc-content"
+          }
+        }
+      }
+    },
+    "day": {
+      "type": "action",
+      "selector": "[class=\"fc-agendaDay-button fc-button fc-state-default fc-corner-right\"]",
+      "control": "action.button",
+      "selectContains": "day"
+    }
+  },
+  "connect": [
+    {
+      "match": [
+        "isCalendar"
+      ],
+      "screens": [
+        "availablecalendar"
+      ]
+    }
+  ]
+}

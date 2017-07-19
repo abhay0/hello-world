@@ -1,0 +1,128 @@
+{
+  "type": "object",
+  "properties": {
+    "resourcetype": {
+      "type": "select",
+      "control": "select",
+      "selector": "[id=\"IO:6e42c0e76f9d6240538e0d55eb3ee487\"]"
+    },
+    "bookfor": {
+      "type": "select",
+      "selector": "[id=\"IO:2ac2c0e76f9d6240538e0d55eb3ee422\"]",
+      "control": "select"
+    },
+    "slottype": {
+      "type": "select",
+      "control": "select",
+      "selector": "[id=\"IO:381340676f9d6240538e0d55eb3ee431\"]"
+    },
+    "meetingroom": {
+      "type": "string",
+      "selector": "[id=\"sys_display.IO:20d308e76f9d6240538e0d55eb3ee4b7\"]",
+      "control": "focusedText"
+    },
+    "meetingroom_set": {
+      "type": "string",
+      "selector": "[id=\"sys_display.IO:20d308e76f9d6240538e0d55eb3ee4b7\"]",
+      "control": "text.change,blur"
+    },
+    "autocomplete": {
+      "type": "array",
+      "selectHidden": true,
+      "selectorAll": ".ac_dropdown div",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "control": "property.innerText"
+          }
+        }
+      }
+    },
+    "date": {
+      "type": "date",
+      "selector": "[id=\"IO:d30408e76f9d6240538e0d55eb3ee46a\"]",
+      "control": "text",
+      "format": "DD-MM-YYYY"
+    },
+    "startdate": {
+      "type": "date",
+      "selector": "[id=\"IO:32e48ce76f9d6240538e0d55eb3ee46f\"]",
+      "control": "text",
+      "format": "DD-MM-YYYY"
+    },
+    "enddate": {
+      "type": "date",
+      "selector": "[id=\"IO:1b2548e76f9d6240538e0d55eb3ee405\"]",
+      "control": "text",
+      "format": "DD-MM-YYYY"
+    },
+    "starttime": {
+      "type": "select",
+      "selector": "[id=\"IO:3166042b6f9d6240538e0d55eb3ee4e8\"]",
+      "control": "select"
+    },
+    "endtime": {
+      "type": "select",
+      "selector": "[id=\"IO:21968ce76f9d6240538e0d55eb3ee4c5\"]",
+      "control": "select"
+    },
+    "book": {
+      "type": "action",
+      "selector": "[id=\"add_button\"] > div",
+      "control": "action.button",
+      "selectContains": "Book"
+    },
+    "myBookings": {
+      "type": "action",
+      "selector": "button",
+      "control": "action.button",
+      "selectContains": "My Bookings"
+    },
+    "logout": {
+      "type": "action",
+      "selector": "a",
+      "control": "action.link",
+      "selectContains": "Logout"
+    },
+    "isRoompanda": {
+      "type": "identifier",
+      "selector": "center",
+      "control": "exists",
+      "selectContains": "RoomPanda"
+    },
+    "reload": {
+      "type": "action",
+      "selector": "a",
+      "control": "action.link",
+      "selectContains": "My Profile"
+    },
+    "availability": {
+      "type": "action",
+      "selector": "a",
+      "control": "action.button",
+      "selectContains": "CALENDER AVAILABILITY"
+    },
+    "isstart": {
+      "type": "boolean",
+      "selector": "[name=\"IO:32e48ce76f9d6240538e0d55eb3ee46f\"]",
+      "control": "exists"
+    },
+    "isRoomPandaByURL": {
+      "type": "identifier",
+      "selector": "html",
+      "control": "url.glideapp.servicecatalog_cat_item_view.do?v=1&sysparm_id=dd2280e76f9d6240538e0d55eb3ee4c5"
+    }
+  },
+  "connect": [
+    {
+      "match": [
+        "isRoomPandaByURL"
+      ],
+      "screens": [
+        "roompanda"
+      ]
+    }
+  ]
+}

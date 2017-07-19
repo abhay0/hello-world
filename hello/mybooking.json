@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "properties": {
+    "isMyBooking": {
+      "type": "identifier",
+      "selector": "html",
+      "control": "url.u_resource_request_list.do"
+    },
+    "list": {
+      "type": "array",
+      "selectorAll": ".list2_body tr",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "type": "string",
+            "selector": ".vt",
+            "control": "property.innerText"
+          },
+          "status": {
+            "type": "string",
+            "control": "property.innerText",
+            "selector": ".vt",
+            "selectIndex": 4
+          },
+          "createTime": {
+            "type": "string",
+            "selector": ".vt",
+            "control": "property.innerText",
+            "selectIndex": 2
+          },
+          "next": {
+            "type": "action",
+            "selector": ".linked.formlink",
+            "control": "action.link"
+          }
+        }
+      }
+    },
+    "previousPage": {
+      "type": "action",
+      "selector": "button span",
+      "control": "action.button",
+      "selectContains": "Previous page"
+    },
+    "nextPage": {
+      "type": "action",
+      "selector": "button span",
+      "control": "action.button",
+      "selectContains": "Next page"
+    },
+    "back": {
+      "type": "action",
+      "selector": "[id=\"pill_7\"]",
+      "control": "action.button"
+    }
+  },
+  "connect": [
+    {
+      "match": [
+        "isMyBooking"
+      ],
+      "screens": [
+        "mybooking"
+      ]
+    }
+  ]
+}

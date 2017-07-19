@@ -1,0 +1,61 @@
+{
+  "type": "object",
+  "properties": {
+    "bookingDate": {
+      "type": "string",
+      "selector": "[id=\"sys_readonly.u_resource_request.u_date\"]",
+      "control": "text"
+    },
+    "isresourceRequest": {
+      "type": "identifier",
+      "selector": "html",
+      "control": "url.u_resource_request.do"
+    },
+    "requestedFor": {
+      "type": "string",
+      "selector": "[name=\"u_resource_request.opened_by_label\"]",
+      "control": "text"
+    },
+    "startTime": {
+      "type": "string",
+      "selector": "[id=\"sys_readonly.u_resource_request.u_start_time\"]",
+      "control": "text"
+    },
+    "endTime": {
+      "type": "string",
+      "selector": "[id=\"sys_readonly.u_resource_request.u_end_date\"]",
+      "control": "text"
+    },
+    "meetingRoom": {
+      "type": "string",
+      "selector": "[name=\"u_resource_request.u_meeting_room_label\"]",
+      "control": "text"
+    },
+    "cancel": {
+      "type": "action",
+      "selector": "[id=\"cancel_booking\"]",
+      "control": "action.button"
+    },
+    "summary": {
+      "type": "string",
+      "selector": "[name=\"u_resource_request.short_description\"]",
+      "control": "text",
+      "selectHidden": true
+    },
+    "back": {
+      "type": "action",
+      "selector": "[id=\"pill_7\"]",
+      "control": "action.button"
+    }
+  },
+  "connect": [
+    {
+      "match": [
+        "isresourceRequest"
+      ],
+      "screens": [
+        "resourcerequest"
+      ]
+    }
+  ]
+}
